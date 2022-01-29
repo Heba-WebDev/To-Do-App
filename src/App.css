@@ -12,10 +12,16 @@
 :root {
 
     /*Colors*/
+    --white: hsl(0, 0%, 98%);
     --bg-color: hsl(236, 33%, 92%);
     --completed: hsl(233, 11%, 84%);
     --unselected-options: hsl(236, 9%, 61%);
     --selected-options: hsl(235, 19%, 35%);
+     
+    /*URLs*/
+    --bg-desktop: url(./assets/bg-desktop-light.jpg);
+    --bg-mobile: url(./assets/bg-mobile-light.jpg);
+   
 
     /* font-sizes */
     --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
@@ -28,6 +34,14 @@
     --fs-200: 0.875rem;
     
 }
+
+[data-theme='dark'] {
+    --white:  hsl(235, 24%, 19%);
+    --bg-color: hsl(235, 21%, 11%);
+    --completed: hsl(233, 11%, 84%);
+    --unselected-options: hsl(236, 9%, 61%);
+    --selected-options: hsl(235, 19%, 35%);
+  }
 
 @media (min-width: 35em) {
     :root {
@@ -110,5 +124,6 @@ width: 100%;
 height: 100vh;
 background:var(--bg-color) url(./assets/bg-desktop-light.jpg) no-repeat;
 background-size: contain;
-color: hsl(235, 19%, 35%);
+color: var(--white);
 }
+
