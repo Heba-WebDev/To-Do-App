@@ -12,6 +12,11 @@
 :root {
 
     /*Colors*/
+    --app-bg: hsl(236, 33%, 92%);
+    --todo-bg: hsl(0, 0%, 98%);
+    --todo-main-text: hsl(235, 19%, 35%);
+    --todo-secondary-text: hsl(236, 9%, 61%);
+    --todo-done-text: hsl(233, 11%, 84%);
     --white: hsl(0, 0%, 98%);
     --bg-color: hsl(236, 33%, 92%);
     --completed: hsl(233, 11%, 84%);
@@ -36,11 +41,11 @@
 }
 
 [data-theme='dark'] {
-    --white:  hsl(235, 24%, 19%);
-    --bg-color: hsl(235, 21%, 11%);
-    --completed: hsl(233, 11%, 84%);
-    --unselected-options: hsl(236, 9%, 61%);
-    --selected-options: hsl(235, 19%, 35%);
+    --app-bg: hsl(235, 21%, 11%);
+    --todo-bg: hsl(235, 24%, 19%);
+    --todo-main-text: hsl(236, 33%, 92%);
+    --todo-secondary-text: hsl(236, 9%, 61%);
+    --todo-done-text: hsl(233, 11%, 84%);
   }
 
 @media (min-width: 35em) {
@@ -122,8 +127,17 @@ body {
 .app {
 width: 100%;
 height: 100vh;
-background:var(--bg-color) url(./assets/bg-desktop-light.jpg) no-repeat;
+background:var(--app-bg) url(./assets/bg-desktop-light.jpg) no-repeat;
 background-size: contain;
 color: var(--white);
+transition: all .5s;
+
 }
 
+@media (max-width: 35rem) {
+    .app {
+        background:var(--app-bg) url(./assets/bg-mobile-light.jpg) no-repeat;
+        width: 100vw;
+        background-size: contain;
+    }
+}
