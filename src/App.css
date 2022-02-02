@@ -11,6 +11,10 @@
 
 :root {
 
+    /*URLs*/
+    --desktop-bg: url(./assets/bg-desktop-light.jpg);
+    --mobile-bg: url(./assets/bg-mobile-light.jpg);
+
     /*Colors*/
     --app-bg: hsl(236, 33%, 92%);
     --todo-bg: hsl(0, 0%, 98%);
@@ -23,10 +27,7 @@
     --unselected-options: hsl(236, 9%, 61%);
     --selected-options: hsl(235, 19%, 35%);
      
-    /*URLs*/
-    --bg-desktop: url(./assets/bg-desktop-light.jpg);
-    --bg-mobile: url(./assets/bg-mobile-light.jpg);
-   
+
 
     /* font-sizes */
     --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
@@ -46,6 +47,8 @@
     --todo-main-text: hsl(236, 33%, 92%);
     --todo-secondary-text: hsl(236, 9%, 61%);
     --todo-done-text: hsl(233, 11%, 84%);
+    --desktop-bg: url(./assets/bg-desktop-dark.jpg);
+    --mobile-bg: url(./assets/bg-mobile-dark.jpg);
   }
 
 @media (min-width: 35em) {
@@ -124,20 +127,3 @@ body {
   font-family: 'Josefin Sans';
 }
 
-.app {
-width: 100%;
-height: 100vh;
-background:var(--app-bg) url(./assets/bg-desktop-light.jpg) no-repeat;
-background-size: contain;
-color: var(--white);
-transition: all .5s;
-
-}
-
-@media (max-width: 35rem) {
-    .app {
-        background:var(--app-bg) url(./assets/bg-mobile-light.jpg) no-repeat;
-        width: 100vw;
-        background-size: contain;
-    }
-}
