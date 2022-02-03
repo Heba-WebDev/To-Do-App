@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './Todo.css'
+import List from './List'
 import moon from './assets/icon-moon.svg'
 import sun from './assets/icon-sun.svg'
 
@@ -14,6 +15,18 @@ export default function Todo() {
             setIcon(previousIcon => previousIcon == moon ? sun : moon)
     }
 
+    const [list, setList] = React.useState([]);
+    
+    function addToTheList(event) {
+       if(event.key === 'Enter' && event.target.value != '') {
+           let value = event.target.value;
+             setList(oldArray => [...oldArray, value]);
+              console.log(list)
+              event.target.value = ''
+       }
+       
+    }
+
     
     return (
         <main className="todo-wrapper" data-theme={theme}>
@@ -26,49 +39,24 @@ export default function Todo() {
              <div className="create-wrapper">
                  <div className="create-cricle"></div>
                  <div className="create">
-                     <input type="text" placeholder="Create a new todo..."></input>
+                     <input 
+                     type="text" 
+                     placeholder="Create a new todo..."
+                     onKeyPress={addToTheList}
+                     ></input>
                  </div>
              </div>
 
+             {list.length !== 0 && 
+             
+             
              <div className="todo-list-wrapper">
-             <div className="list">
-                 {/* first list */}
-                 <div className="text">
-                     <div className="list-cricle"></div>
-                     <div className="list-text">Comeplete the react cource</div>
-                     </div>
-                     <div className="delete"></div>
-                     <hr></hr>
-                    </div>
+           {list.map(newList => {
+          return  <List value={newList}/>
+           })}
 
-                 {/* second list */}
-                 <div className="list">
-                     <div className="text">
-                     <div className="list-cricle"></div>
-                     <div className="list-text">Learn Tailwind</div>
-                     </div>
-                     <div className="delete"></div>
-                     <hr></hr>
-                 </div>
-
-                  {/* third list */}
-                  <div className="list">
-                     <div className="text">
-                     <div className="list-cricle"></div>
-                     <div className="list-text">Start CS50</div>
-                     </div>
-                     <div className="delete"></div>
-                     <hr></hr>
-                 </div>
-                
-                 <div className="list-states">
-                    <div className="itemCount">3 itmes left</div>
-                    <div className="clear">Clear Completed</div>
-                </div>
-
-                
-
-             </div>
+             </div>}
+             
          </div>
         </main>
     )

@@ -48,6 +48,7 @@ justify-content: space-between;
     background-color: var(--todo-bg);
     padding: 0.7rem 1.3rem;
     border-radius: 8px;
+    margin-bottom: 1.5rem;
 }
 
 @media (max-width:320px) {
@@ -76,8 +77,8 @@ input:focus {
 }
 
 .todo-list-wrapper {
-    margin-top: 2rem;
-    padding-top: 0.5rem;
+    
+    padding: 0;
     background-color: var(--todo-bg);
     border-radius: 5px;
 }
@@ -99,10 +100,9 @@ input:focus {
 
 .text {
     display: flex;
-    padding: 0.7rem 1.3rem;
+    padding:  1rem;
     align-items: center;
     color: var(--todo-main-text);
-    
 }
 
 hr {
