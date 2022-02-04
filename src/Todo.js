@@ -16,12 +16,12 @@ export default function Todo() {
     }
 
     const [list, setList] = React.useState([]);
+    const [listItems, setListItems] = React.useState(0);
     
     function addToTheList(event) {
        if(event.key === 'Enter' && event.target.value != '') {
            let value = event.target.value;
              setList(oldArray => [...oldArray, value]);
-              console.log(list)
               event.target.value = ''
        }
        
@@ -51,10 +51,17 @@ export default function Todo() {
              
              
              <div className="todo-list-wrapper">
-           {list.map(newList => {
-          return  <List value={newList}/>
-           })}
-
+           {list.map((newList,index) => {
+           return <List value={newList} key={index}/>
+           
+           })
+           
+           }
+           
+                 <div className="list-states">
+                    <div className="itemCount">{listItems} itmes left</div>
+                    <div className="clear">Clear Completed</div>
+                 </div> 
              </div>}
              
          </div>

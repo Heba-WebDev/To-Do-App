@@ -26,7 +26,7 @@
     --completed: hsl(233, 11%, 84%);
     --unselected-options: hsl(236, 9%, 61%);
     --selected-options: hsl(235, 19%, 35%);
-     
+    --circle: hsla(0, 0%, 71%, 0.3);
 
 
     /* font-sizes */
