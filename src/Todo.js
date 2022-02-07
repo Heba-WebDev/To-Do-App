@@ -48,6 +48,12 @@ export default function Todo() {
             setListItemsCount(previousCount => previousCount - 1)
         }
     }
+
+    function deleteItem(event) {
+        list.map((newList,index) => {
+          console.log(event.target.newList)
+        })
+    }
     
     return (
         <main className="todo-wrapper" data-theme={theme}>
@@ -75,18 +81,18 @@ export default function Todo() {
            {list.map((newList,index) => {
            return <List 
            value={newList} 
-           key={index*(index+1)/2} 
+           key={index} 
+           handeleDelete={deleteItem}
            handleCount={addToItemCount}
            handleClick={substractItemCount}/>
-           
            })
            
            }
-           
+              {list.length != 0 && listItemsCount != 0 &&
                  <div className="list-states">
                     <div className="itemCount">{listItemsCount} itmes left</div>
                     <div className="clear">Clear Completed</div>
-                 </div> 
+                 </div> }
              </div>}
              
          </div>

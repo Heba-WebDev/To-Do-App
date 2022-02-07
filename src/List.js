@@ -1,4 +1,5 @@
 import React from "react";
+import reactDom from "react-dom";
 import cross from './assets/icon-cross.svg'
 
 
@@ -17,7 +18,21 @@ function isListChecked() {
     
 }
 
+function deleteThisItem(event)  {
+    
+             props.handleClick()
+            event.preventDefault()
+            event.target.parentNode.parentNode.remove()        
+}
+  
+        
+       
+
+
+
     return (
+
+        
         <div className="todo-list-wrapper">
              
              <div className="list">
@@ -32,8 +47,8 @@ function isListChecked() {
                      >{props.value}</div>
 
                      </div>
-                     <div className="delete">
-                         <img src={cross} alt="delete"/>
+                     <div className="delete" onClick={deleteThisItem}>
+                         <img src={cross} alt="delete" />
                      </div>
                      
                     </div>
