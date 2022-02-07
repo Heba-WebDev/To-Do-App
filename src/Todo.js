@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import './Todo.css'
 import List from './List'
 import moon from './assets/icon-moon.svg'
@@ -7,32 +7,53 @@ import sun from './assets/icon-sun.svg'
 
 export default function Todo() {
 
-    let themeIcon = moon;
+    
     const [theme, setTheme] = React.useState('light');
     const [icon, setIcon] = React.useState(moon);
     function switchTheTheme()  {
-            setTheme(previousState => previousState == 'light' ? 'dark' : 'light') 
-            setIcon(previousIcon => previousIcon == moon ? sun : moon)
+            setTheme(previousState => previousState === 'light' ? 'dark' : 'light') 
+            setIcon(previousIcon => previousIcon === moon ? sun : moon)
     }
 
     const [list, setList] = React.useState([]);
-    const [listItems, setListItems] = React.useState(0);
+    const [listItemsCount, setListItemsCount] = React.useState(0);
     
     function addToTheList(event) {
-       if(event.key === 'Enter' && event.target.value != '') {
+       if(event.key === 'Enter' && event.target.value !== '') {
            let value = event.target.value;
              setList(oldArray => [...oldArray, value]);
-              event.target.value = ''
+              event.target.value = '';
+              setListItemsCount(previousCount => previousCount + 1)
        }
-       
     }
 
+    //const [completed, setCompleted] = React.useState(false);
+ 
+    // function itemListCompleted() {
+        
+    //     if(listItemsCount > 0) {
+    //         setListItemsCount(previousCount => previousCount - 1)
+    //     } 
+    //    // setCompleted(previousState => !previousState)
+    //    // setListItemsCount(previousCount => previousCount + 1)
+       
+    // }
+
+    function addToItemCount() {
+        setListItemsCount(previousCount => previousCount + 1)
+    }
+
+    function substractItemCount() {
+        if(listItemsCount > 0) {
+            setListItemsCount(previousCount => previousCount - 1)
+        }
+    }
     
     return (
         <main className="todo-wrapper" data-theme={theme}>
          <nav className="navbar">
              <h1>T O D O</h1>
-             <img className="icon" src={icon} onClick={switchTheTheme}/>
+             <img className="icon" alt="light-dark mode icon" src={icon} onClick={switchTheTheme}/>
          </nav>
 
          <div className="todo-app">
@@ -52,14 +73,18 @@ export default function Todo() {
              
              <div className="todo-list-wrapper">
            {list.map((newList,index) => {
-           return <List value={newList} key={index}/>
+           return <List 
+           value={newList} 
+           key={index*(index+1)/2} 
+           handleCount={addToItemCount}
+           handleClick={substractItemCount}/>
            
            })
            
            }
            
                  <div className="list-states">
-                    <div className="itemCount">{listItems} itmes left</div>
+                    <div className="itemCount">{listItemsCount} itmes left</div>
                     <div className="clear">Clear Completed</div>
                  </div> 
              </div>}

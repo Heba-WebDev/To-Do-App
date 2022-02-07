@@ -9,6 +9,12 @@ const [checkedList, setCheckedList] = React.useState(false);
 
 function isListChecked() {
     setCheckedList((previousState) =>  previousState === false ? true : false)
+     if(checkedList) {
+         props.handleCount()
+     } else {
+         props.handleClick()
+     }
+    
 }
 
     return (
@@ -27,7 +33,7 @@ function isListChecked() {
 
                      </div>
                      <div className="delete">
-                         <img src={cross} />
+                         <img src={cross} alt="delete"/>
                      </div>
                      
                     </div>
