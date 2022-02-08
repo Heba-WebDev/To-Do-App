@@ -8,6 +8,7 @@ export default function List(props) {
 const [checkedList, setCheckedList] = React.useState(false);
 
 
+
 function isListChecked() {
     setCheckedList((previousState) =>  previousState === false ? true : false)
      if(checkedList) {
@@ -19,14 +20,14 @@ function isListChecked() {
 }
 
 function deleteThisItem(event)  {
-    
-             props.handleClick()
-            event.preventDefault()
-            event.target.parentNode.parentNode.remove()        
+   if(!checkedList) {
+    props.handleClick()
+   }
+ 
+   event.preventDefault()
+   event.target.parentNode.parentNode.remove()        
 }
-  
-        
-       
+
 
 
 
@@ -35,10 +36,10 @@ function deleteThisItem(event)  {
         
         <div className="todo-list-wrapper">
              
-             <div className="list">
+             <div className="list" >
                 
                  <div className="text">
-                     <div onClick={isListChecked}
+                     <div onClick={isListChecked} 
                      className={`${checkedList ? "checked-circle" : "unchecked-circle"}`}></div>
                      
                      

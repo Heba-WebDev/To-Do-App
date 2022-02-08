@@ -27,33 +27,23 @@ export default function Todo() {
        }
     }
 
-    //const [completed, setCompleted] = React.useState(false);
- 
-    // function itemListCompleted() {
-        
-    //     if(listItemsCount > 0) {
-    //         setListItemsCount(previousCount => previousCount - 1)
-    //     } 
-    //    // setCompleted(previousState => !previousState)
-    //    // setListItemsCount(previousCount => previousCount + 1)
-       
-    // }
+
+    const [itemCompleted, setItemCompleted] = React.useState(false);
 
     function addToItemCount() {
         setListItemsCount(previousCount => previousCount + 1)
+        setItemCompleted(previousState => previousState === true ? false : true)
     }
 
     function substractItemCount() {
         if(listItemsCount > 0) {
             setListItemsCount(previousCount => previousCount - 1)
+            setItemCompleted(previousState => previousState === false ? true : false)
         }
     }
+   
 
-    function deleteItem(event) {
-        list.map((newList,index) => {
-          console.log(event.target.newList)
-        })
-    }
+    
     
     return (
         <main className="todo-wrapper" data-theme={theme}>
@@ -82,13 +72,12 @@ export default function Todo() {
            return <List 
            value={newList} 
            key={index} 
-           handeleDelete={deleteItem}
            handleCount={addToItemCount}
            handleClick={substractItemCount}/>
            })
            
            }
-              {list.length != 0 && listItemsCount != 0 &&
+              {list.length !== 0 &&  
                  <div className="list-states">
                     <div className="itemCount">{listItemsCount} itmes left</div>
                     <div className="clear">Clear Completed</div>
