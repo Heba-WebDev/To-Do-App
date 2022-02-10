@@ -1,9 +1,10 @@
 import React from "react";
+import ReactDOM from 'react-dom'
 import './Todo.css'
 import List from './List'
 import moon from './assets/icon-moon.svg'
 import sun from './assets/icon-sun.svg'
-
+import cross from './assets/icon-cross.svg'
 
 export default function Todo() {
 
@@ -16,35 +17,64 @@ export default function Todo() {
     }
 
     const [list, setList] = React.useState([]);
+    const [listText, setListText] = React.useState("");
     const [listItemsCount, setListItemsCount] = React.useState(0);
+
+
     
+
     function addToTheList(event) {
+     
+        const newTodoItem = {
+            id: new Date().getTime(),
+            text: listText,
+            completed: false,
+        }
        if(event.key === 'Enter' && event.target.value !== '') {
-           let value = event.target.value;
-             setList(oldArray => [...oldArray, value]);
+           setListText(event.target.value)
+           
+             setList([...list].concat(event.target.value));
               event.target.value = '';
+              setListText("")
               setListItemsCount(previousCount => previousCount + 1)
        }
     }
+    
 
-
-    const [itemCompleted, setItemCompleted] = React.useState(false);
 
     function addToItemCount() {
         setListItemsCount(previousCount => previousCount + 1)
-        setItemCompleted(previousState => previousState === true ? false : true)
+      
     }
 
     function substractItemCount() {
         if(listItemsCount > 0) {
             setListItemsCount(previousCount => previousCount - 1)
-            setItemCompleted(previousState => previousState === false ? true : false)
         }
     }
    
 
-    
-    
+    const [checkedList, setCheckedList] = React.useState(false);
+
+
+
+  function isListChecked() {
+    setCheckedList((previousState) =>  previousState === false ? true : false)
+    checkedList ?  addToItemCount()  :   substractItemCount()
+  }
+
+function deleteThisItem(event, id)  {
+   if(!checkedList) {
+    substractItemCount()
+   }
+   event.preventDefault()
+   event.target.parentNode.parentNode.remove() 
+   const newList = list.filter(item => item.id !== id);
+   setList(newList)
+}
+
+
+
     return (
         <main className="todo-wrapper" data-theme={theme}>
          <nav className="navbar">
@@ -69,19 +99,35 @@ export default function Todo() {
              
              <div className="todo-list-wrapper">
            {list.map((newList,index) => {
-           return <List 
-           value={newList} 
-           key={index} 
-           handleCount={addToItemCount}
-           handleClick={substractItemCount}/>
+               
+           return   <div className="list" >
+              
+           <div className="text">
+               <div onClick={isListChecked} 
+               className={`${checkedList ? "checked-circle" : "unchecked-circle"}`}></div>
+               
+               
+               <div onClick={isListChecked} 
+               className={`${checkedList ? "checked-list" : "unchecked-list"}`}
+               >{newList}</div>
+
+               </div>
+               <div className="delete" onClick={deleteThisItem}>
+                   <img src={cross} alt="delete" />
+               </div>
+               
+              
+
+
+       </div>
+             
+          
            })
            
            }
-              {list.length !== 0 &&  
-                 <div className="list-states">
-                    <div className="itemCount">{listItemsCount} itmes left</div>
-                    <div className="clear">Clear Completed</div>
-                 </div> }
+              
+
+
              </div>}
              
          </div>

@@ -13,8 +13,10 @@ function isListChecked() {
     setCheckedList((previousState) =>  previousState === false ? true : false)
      if(checkedList) {
          props.handleCount()
+         props.handleChecked()
      } else {
          props.handleClick()
+         props.handleChecked()
      }
     
 }
@@ -23,7 +25,6 @@ function deleteThisItem(event)  {
    if(!checkedList) {
     props.handleClick()
    }
- 
    event.preventDefault()
    event.target.parentNode.parentNode.remove()        
 }
@@ -53,6 +54,7 @@ function deleteThisItem(event)  {
                      </div>
                      
                     </div>
+
 
              </div>
     )

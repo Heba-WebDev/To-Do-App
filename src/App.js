@@ -14,3 +14,21 @@ function App() {
 }
 
 export default App;
+
+
+/*
+
+{list.length &&  
+  <List 
+           value={newList} 
+           key={index} 
+           handleChecked={isComplete}
+           handleCount={addToItemCount}
+           handleClick={substractItemCount}
+           listItemsCount={listItemsCount}
+           />
+                 <div className="list-states">
+                    <div className="itemCount">{listItemsCount} itmes left</div>
+                    <div className="clear" onClick={clearCompletedItems}>Clear Completed</div>
+                 </div> }
+*/
