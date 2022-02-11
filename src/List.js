@@ -45,7 +45,7 @@ function deleteThisItem(event)  {
                      >{props.value}</div>
 
                      </div>
-                     <div className="delete">
+                     <div className="delete" onClick={deleteThisItem}>
                          <img src={cross} alt="delete"/>
                      </div>
                      
