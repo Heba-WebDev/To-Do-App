@@ -1,5 +1,7 @@
 import React from "react";
 import cross from './assets/icon-cross.svg'
+import reactDom from "react-dom";
+
 
 
 export default function List(props) {
@@ -11,11 +13,22 @@ function isListChecked() {
     setCheckedList((previousState) =>  previousState === false ? true : false)
      if(checkedList) {
          props.handleCount()
+         props.handleChecked()
      } else {
          props.handleClick()
+         props.handleChecked()
      }
     
 }
+
+function deleteThisItem(event)  {
+    if(!checkedList) {
+     props.handleClick()
+    }
+    event.preventDefault()
+    event.target.parentNode.parentNode.remove()        
+ }
+ 
 
     return (
         <div className="todo-list-wrapper">
@@ -41,3 +54,6 @@ function isListChecked() {
              </div>
     )
 }
+
+
+
