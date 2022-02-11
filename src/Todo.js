@@ -27,6 +27,26 @@ export default function Todo() {
        }
     }
 
+
+
+
+    function addToItemCount() {
+        setListItemsCount(previousCount => previousCount + 1)
+      
+    }
+
+    function substractItemCount() {
+        if(listItemsCount > 0) {
+            setListItemsCount(previousCount => previousCount - 1)
+        }
+    }
+   
+
+    const [checkedList, setCheckedList] = React.useState(false);
+
+
+
+
     //const [completed, setCompleted] = React.useState(false);
  
     // function itemListCompleted() {
