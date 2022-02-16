@@ -55,6 +55,9 @@ export default function Todo() {
    setList(newList)
    
    }
+
+
+   const [listItemsCount, SetListItemsCount] = React.useState(0)
     
     return (
         <main className="todo-wrapper" data-theme={theme}>
@@ -109,8 +112,12 @@ export default function Todo() {
                     </div>
              
              )}
-            
-            
+           
+           {list &&
+            <div className="list-states">
+                    <div className="itemCount">{listItemsCount} itmes left</div>
+                    <div className="clear">Clear Completed</div>
+                 </div>}
              </div>
          
         </main>
