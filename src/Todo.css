@@ -65,7 +65,7 @@ justify-content: space-between;
     background-color: var(--todo-bg);
     margin-right: 0.3rem;
 }
-.create > input {
+ form > input {
     border: 0;
     background-color: var(--todo-bg);
     color: var(--todo-main-text);
@@ -81,6 +81,7 @@ input:focus {
     padding: 0;
     background-color: var(--todo-bg);
     border-radius: 5px;
+    color: var(--todo-main-text);
 }
 
 @media (max-width:320px) {
@@ -112,6 +113,11 @@ input:focus {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgb(187, 186, 186, 0.3);
+  
+}
+
+.list > * {
+    color: var(--todo-main-text);
 }
 
 .text {
@@ -150,3 +156,5 @@ hr {
     font-weight: 200;
     font-size: 0.8rem;
 }
+
+

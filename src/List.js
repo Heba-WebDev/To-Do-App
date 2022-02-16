@@ -1,39 +1,40 @@
-import React from "react";
-import cross from './assets/icon-cross.svg'
-import reactDom from "react-dom";
+ import React from "react";
+ import cross from './assets/icon-cross.svg'
+ import reactDom from "react-dom";
 
 
 
-export default function List(props) {
+ export default function List(props) {
 
-const [checkedList, setCheckedList] = React.useState(false);
+ const [checkedList, setCheckedList] = React.useState(false);
 
 
-function isListChecked() {
-    setCheckedList((previousState) =>  previousState === false ? true : false)
-     if(checkedList) {
+ function isListChecked() {
+     setCheckedList((previousState) =>  previousState === false ? true : false)
+      if(checkedList) {
          props.handleCount()
-         props.handleChecked()
+        // props.handleChecked()
      } else {
-         props.handleClick()
-         props.handleChecked()
-     }
+          props.handleClick()
+          //props.handleChecked()
+  
+      }
     
-}
+ }
 
-function deleteThisItem(event)  {
-    if(!checkedList) {
+ function deleteThisItem(event)  {
+     if(!checkedList) {
      props.handleClick()
     }
-    event.preventDefault()
-    event.target.parentNode.parentNode.remove()        
- }
+     event.preventDefault()
+     event.target.parentNode.parentNode.remove()        
+  }
  
 
     return (
-        <div className="todo-list-wrapper">
+        <div className="todo-list-wrapper" id={1}>
              
-             <div className="list">
+             <div className="list" id={1}>
                 
                  <div className="text">
                      <div onClick={isListChecked}
@@ -51,9 +52,11 @@ function deleteThisItem(event)  {
                      
                     </div>
 
-             </div>
+              </div>
+
+             
     )
-}
+ }
 
 
 
