@@ -1,6 +1,7 @@
  import React from "react";
  import cross from './assets/icon-cross.svg'
  import reactDom from "react-dom";
+import Todo from "./Todo";
 
 
 
@@ -32,9 +33,9 @@
  
 
     return (
-        <div className="todo-list-wrapper" id={1}>
+        <div className="todo-list-wrapper" key={Todo.id}>
              
-             <div className="list" id={1}>
+             <div className="list">
                 
                  <div className="text">
                      <div onClick={isListChecked}
