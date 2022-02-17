@@ -1,6 +1,6 @@
 # Todo app built with React and vanilla CSS
 
-![Design preview for the Todo app coding challenge](https://i.ibb.co/2q2pf03/desktop-preview.jpg)
+![Design preview for the Todo app coding challenge](https://i.ibb.co/BZ8pW2t/Screen-Shot-2022-02-18-at-12-30-41-AM-2.png)
 
 ## Live site 
 
