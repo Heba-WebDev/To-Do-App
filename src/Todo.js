@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactDOM } from "react";
 import './Todo.css'
 import cross from './assets/icon-cross.svg'
 //import List from './List'
