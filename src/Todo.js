@@ -31,6 +31,7 @@ export default function Todo() {
             id: new Date().getTime(),
             text: listItem,
             completed: false,
+            hide: false,
         }
         
         setList([...list].concat(newItem))
@@ -85,6 +86,42 @@ export default function Todo() {
        })
     setList(newList)  
    }
+
+   function showAll() {
+    const newList = [...list].map((todo) => {
+            todo.hide = false
+            return todo
+    })
+
+    setList(newList)
+    
+   }
+
+   function showActive() {
+    
+   const newList = [...list].map((todo) => {
+        if(todo.completed) {
+            todo.hide = true
+        } else {
+            todo.hide = false
+        }return todo
+    })
+
+    setList(newList)
+    
+   }
+
+   function showCompleted() {
+    const newList = [...list].map((todo) => {
+        if(!todo.completed) {
+            todo.hide = true 
+        } else {
+            todo.hide = false
+        }return todo
+    })
+
+    setList(newList)
+   }
     
     return (
         <main className="todo-wrapper" data-theme={theme}>
@@ -114,12 +151,14 @@ export default function Todo() {
                  </div>
              </div>
 
-             
+             <div className="todo-list-wrapper">
              {list.map((todo) =>
              
-              <div className="todo-list-wrapper" key={todo.id}>
+           
              
-             <div className="list">
+             <div className="list" 
+             style={{display: todo.hide ? 'none' : 'flex'}}
+             key={todo.id}>
                 
                  <div className="text">
                      <div onClick={() => todoCompleted(todo.id)}
@@ -135,27 +174,27 @@ export default function Todo() {
                          <img src={cross} alt="delete"/>
                      </div>
                      
-                    </div>
+                    
                     </div>
              
-             )}
+             )}</div>
            
            {list.length !== 0 &&
             <div className="list-states">
                     <div className="itemCount">{listItemsCount} itmes left</div>
                     <div className="clear" onClick={clearCompletedItems}>Clear Completed</div>
                  </div>}
-
+       {list.length !== 0 &&
             <div className="filter-todo-list">
-                <div>All</div>
-                <div>Active</div>
-                <div>Completed</div>
-            </div>
+                <div onClick={showAll}>All</div>
+                <div onClick={showActive}>Active</div>
+                <div onClick={showCompleted}>Completed</div>
+            </div>}
             
 
-            <div className="drag-drop">
+            {list.length !== 0 && <div className="drag-drop">
                 <p>Drag and drop to reorder list</p>
-            </div>
+            </div>}
              </div>
          
         </main>
