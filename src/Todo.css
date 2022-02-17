@@ -80,7 +80,8 @@ input:focus {
     
     padding: 0;
     background-color: var(--todo-bg);
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     color: var(--todo-main-text);
 }
 
@@ -156,6 +157,8 @@ hr {
     font-weight: 200;
     font-size: 0.8rem;
     background-color: var(--todo-bg);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 

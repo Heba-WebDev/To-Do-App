@@ -192,9 +192,7 @@ export default function Todo() {
             </div>}
             
 
-            {list.length !== 0 && <div className="drag-drop">
-                <p>Drag and drop to reorder list</p>
-            </div>}
+            
              </div>
          
         </main>
