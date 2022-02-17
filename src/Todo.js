@@ -34,22 +34,42 @@ export default function Todo() {
         }
         
         setList([...list].concat(newItem))
-        
+        SetListItemsCount(previousCount => previousCount + 1)
         setListItem("")
         
     }
    }
 
-   function deleteItem(id) {
-      const newList = [...list].filter((todo) => todo.id !== id)
+  
 
-      setList(newList)
+   function deleteItem(id) {
+       
+     const newList = [...list].filter((todo) => {
+      if(todo.id === id && !todo.completed) {
+        SetListItemsCount(previousCount => previousCount - 1)
+      }
+
+      return todo.id !== id
+     })
+    
+     setList(newList)
+      
    }
+
+
+   const [listItemsCount, SetListItemsCount] = React.useState(0);
+
 
    function todoCompleted(id) {
 
    const newList = [...list].map((todo) => { if(todo.id === id) {
-     todo.completed = !todo.completed }
+     if (todo.completed === false) {
+         todo.completed = true;
+         SetListItemsCount(previousCount => previousCount - 1)
+     } else {
+        todo.completed = false;
+        SetListItemsCount(previousCount => previousCount + 1)
+     }}
      return todo
    })
    setList(newList)
@@ -57,7 +77,14 @@ export default function Todo() {
    }
 
 
-   const [listItemsCount, SetListItemsCount] = React.useState(0)
+   
+
+   function clearCompletedItems(id) {
+    const newList = [...list].filter((todo) => {
+        return !todo.completed
+       })
+    setList(newList)  
+   }
     
     return (
         <main className="todo-wrapper" data-theme={theme}>
@@ -113,11 +140,22 @@ export default function Todo() {
              
              )}
            
-           {list &&
+           {list.length !== 0 &&
             <div className="list-states">
                     <div className="itemCount">{listItemsCount} itmes left</div>
-                    <div className="clear">Clear Completed</div>
+                    <div className="clear" onClick={clearCompletedItems}>Clear Completed</div>
                  </div>}
+
+            <div className="filter-todo-list">
+                <div>All</div>
+                <div>Active</div>
+                <div>Completed</div>
+            </div>
+            
+
+            <div className="drag-drop">
+                <p>Drag and drop to reorder list</p>
+            </div>
              </div>
          
         </main>

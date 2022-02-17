@@ -155,6 +155,24 @@ hr {
     justify-content: space-between;
     font-weight: 200;
     font-size: 0.8rem;
+    background-color: var(--todo-bg);
 }
 
 
+.filter-todo-list {
+    color: var(--todo-secondary-text);
+    padding: 1.8rem 1.3rem;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 200;
+    font-size: 0.8rem;
+    background-color: var(--todo-bg);
+    margin-top: 2rem;
+    border-radius: 8px;
+}
+
+.drag-drop {
+    color: var(--todo-secondary-text);
+    text-align: center;
+    margin-top: 1.5rem;
+}
