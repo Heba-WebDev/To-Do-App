@@ -17,9 +17,15 @@ export default function Todo() {
     }
 
    //Two states. first for the todo list array and second for the each item state
-   const [list, setList] = React.useState([]);
+   const [list, setList] = React.useState(
+    JSON.parse(localStorage.getItem("todolist")) || []
+   );
    const [listItem, setListItem] = React.useState("");
 
+
+   React.useEffect(() => {
+       localStorage.setItem("todolist", JSON.stringify(list))
+   }, [list])
 
    function addToTheList(event) {
    
