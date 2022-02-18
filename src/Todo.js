@@ -22,7 +22,7 @@ export default function Todo() {
    );
    const [listItem, setListItem] = React.useState("");
 
-
+//The useeffect
    React.useEffect(() => {
        localStorage.setItem("todolist", JSON.stringify(list))
    }, [list])
