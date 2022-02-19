@@ -8,9 +8,11 @@ import sun from './assets/icon-sun.svg'
 
 export default function Todo() {
 
-   
+    
+
     const [theme, setTheme] = React.useState('light');
     const [icon, setIcon] = React.useState(moon);
+   
     function switchTheTheme()  {
             setTheme(previousState => previousState === 'light' ? 'dark' : 'light') 
             setIcon(previousIcon => previousIcon === moon ? sun : moon)
@@ -63,13 +65,11 @@ export default function Todo() {
    }
 
 
-   const [listItemsCount, SetListItemsCount] = React.useState(
-       () =>  JSON.parse(localStorage.getItem("itemscount")) ||
-      0);
+   const [listItemsCount, SetListItemsCount] = React.useState(0);
 
-      React.useEffect(() => {
-        localStorage.setItem("itemscount", JSON.stringify(listItemsCount))
-    }, [listItemsCount])
+    //   React.useEffect(() => {
+    //     localStorage.setItem("countitem", JSON.stringify(listItemsCount))
+    // }, [listItemsCount])
 
    function todoCompleted(id) {
 
