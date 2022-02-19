@@ -27,13 +27,11 @@ export default function Todo() {
     }, [icon])
 
    //Two states. first for the todo list array and second for the each item state
-<<<<<<< HEAD
- 
-=======
+
    const [list, setList] = React.useState(() =>
     JSON.parse(localStorage.getItem("todolist")) || []
    );
->>>>>>> local-storage
+
    const [listItem, setListItem] = React.useState("");
 
 
