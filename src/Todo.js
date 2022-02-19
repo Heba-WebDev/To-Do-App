@@ -17,12 +17,12 @@ export default function Todo() {
     }
 
    //Two states. first for the todo list array and second for the each item state
-   const [list, setList] = React.useState(
+   const [list, setList] = React.useState(() =>
     JSON.parse(localStorage.getItem("todolist")) || []
    );
    const [listItem, setListItem] = React.useState("");
 
-//The useeffect
+
    React.useEffect(() => {
        localStorage.setItem("todolist", JSON.stringify(list))
    }, [list])
@@ -63,8 +63,13 @@ export default function Todo() {
    }
 
 
-   const [listItemsCount, SetListItemsCount] = React.useState(0);
+   const [listItemsCount, SetListItemsCount] = React.useState(
+       () =>  JSON.parse(localStorage.getItem("itemscount")) ||
+      0);
 
+      React.useEffect(() => {
+        localStorage.setItem("itemscount", JSON.stringify(listItemsCount))
+    }, [listItemsCount])
 
    function todoCompleted(id) {
 
