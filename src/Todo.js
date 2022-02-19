@@ -10,13 +10,21 @@ export default function Todo() {
 
     
 
-    const [theme, setTheme] = React.useState('light');
-    const [icon, setIcon] = React.useState(moon);
+    const [theme, setTheme] = React.useState(() => localStorage.getItem('mode')|| 'light');
+    const [icon, setIcon] = React.useState(() => localStorage.getItem('modeicon') || moon);
    
     function switchTheTheme()  {
             setTheme(previousState => previousState === 'light' ? 'dark' : 'light') 
-            setIcon(previousIcon => previousIcon === moon ? sun : moon)
+           setIcon(previousIcon => previousIcon === moon ? sun : moon)  
     }
+
+     React.useEffect(() => {
+       localStorage.setItem('mode', theme)
+     }, [theme])
+
+    React.useEffect(() => {
+        localStorage.setItem('modeicon', icon)
+    }, [icon])
 
    //Two states. first for the todo list array and second for the each item state
    const [list, setList] = React.useState(() =>
@@ -65,11 +73,13 @@ export default function Todo() {
    }
 
 
-   const [listItemsCount, SetListItemsCount] = React.useState(0);
+   const [listItemsCount, SetListItemsCount] = React.useState(() => Number(localStorage.getItem('counttodoitems')) || 0);
 
-    //   React.useEffect(() => {
-    //     localStorage.setItem("countitem", JSON.stringify(listItemsCount))
-    // }, [listItemsCount])
+  
+   React.useEffect(() => {
+    localStorage.setItem("counttodoitems", JSON.stringify(listItemsCount))
+}, [listItemsCount])
+  
 
    function todoCompleted(id) {
 
